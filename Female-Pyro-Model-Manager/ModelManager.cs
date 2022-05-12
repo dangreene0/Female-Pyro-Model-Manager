@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace Female_Pyro_Model_Manager
 {
-    public partial class Form1 : Form
+    public partial class ModelManager : Form
     {
         private string folderName;
         private string vpkDefaultName = "Female Pyro Viewmodel - ";
@@ -22,7 +22,7 @@ namespace Female_Pyro_Model_Manager
         private string paintFullStream = Properties.Resources.paints;
         private int selectedCount = 0;
 
-        public Form1()
+        public ModelManager()
         {
             InitializeComponent();
             
@@ -66,7 +66,7 @@ namespace Female_Pyro_Model_Manager
         // Changes all the checkbox values in cosmetics
         private void ChangeAllCheckCosmetics(bool value)
         {
-            for (int i = 1; i < cosmeticListBox.Items.Count; i++)
+            for (int i = 0; i < cosmeticListBox.Items.Count; i++)
             {
                 cosmeticListBox.SetItemChecked(i, value);
             }
@@ -90,11 +90,6 @@ namespace Female_Pyro_Model_Manager
             if (selectedCount > 1)
             {
                 ChangeAllCheckCosmetics(false);
-
-                // This is necessary since for some reason the first slot gets stuck? *shrugs*
-                if (selectInd != 0){
-                    cosmeticListBox.SetItemChecked(0, false);
-                }
                 
                 // Sets the selected back to the one that was just chosen after clearings all of them.
                 cosmeticListBox.SetItemChecked(selectInd, true);

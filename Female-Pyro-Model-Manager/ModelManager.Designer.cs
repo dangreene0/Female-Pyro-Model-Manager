@@ -1,7 +1,7 @@
 ﻿
 namespace Female_Pyro_Model_Manager
 {
-    partial class Form1
+    partial class ModelManager
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Female_Pyro_Model_Manager
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelManager));
             this.tabControls = new System.Windows.Forms.TabControl();
             this.viewmodelPage = new System.Windows.Forms.TabPage();
             this.packBtn = new System.Windows.Forms.Button();
