@@ -7,7 +7,7 @@
     <ProjectGuid>{DEC78E55-AE35-4AB7-93ED-C43044D733BE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Female_Pyro_Model_Manager</RootNamespace>
-    <AssemblyName>Female-Pyro-Model-Manager</AssemblyName>
+    <AssemblyName>Female Pyro Model Manager</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\alaxe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cosmetics.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paints.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

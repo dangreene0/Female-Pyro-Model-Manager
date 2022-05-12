@@ -52,6 +52,7 @@ namespace Female_Pyro_Model_Manager
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gameBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.exportBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControls.SuspendLayout();
             this.viewmodelPage.SuspendLayout();
             this.aboutPage.SuspendLayout();
@@ -175,7 +176,7 @@ namespace Female_Pyro_Model_Manager
             // 
             this.paintLabel.AutoSize = true;
             this.paintLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paintLabel.Location = new System.Drawing.Point(241, 3);
+            this.paintLabel.Location = new System.Drawing.Point(226, 3);
             this.paintLabel.Name = "paintLabel";
             this.paintLabel.Size = new System.Drawing.Size(46, 18);
             this.paintLabel.TabIndex = 3;
@@ -195,9 +196,9 @@ namespace Female_Pyro_Model_Manager
             // 
             this.paintListBox.CheckOnClick = true;
             this.paintListBox.FormattingEnabled = true;
-            this.paintListBox.Location = new System.Drawing.Point(244, 24);
+            this.paintListBox.Location = new System.Drawing.Point(229, 24);
             this.paintListBox.Name = "paintListBox";
-            this.paintListBox.Size = new System.Drawing.Size(245, 289);
+            this.paintListBox.Size = new System.Drawing.Size(260, 289);
             this.paintListBox.TabIndex = 1;
             this.paintListBox.SelectedIndexChanged += new System.EventHandler(this.paintListBox_SelectedIndexChanged);
             // 
@@ -207,12 +208,13 @@ namespace Female_Pyro_Model_Manager
             this.cosmeticListBox.FormattingEnabled = true;
             this.cosmeticListBox.Location = new System.Drawing.Point(11, 24);
             this.cosmeticListBox.Name = "cosmeticListBox";
-            this.cosmeticListBox.Size = new System.Drawing.Size(218, 289);
+            this.cosmeticListBox.Size = new System.Drawing.Size(209, 289);
             this.cosmeticListBox.TabIndex = 0;
             this.cosmeticListBox.SelectedIndexChanged += new System.EventHandler(this.cosmeticListBox_SelectedIndexChanged);
             // 
             // aboutPage
             // 
+            this.aboutPage.Controls.Add(this.label3);
             this.aboutPage.Controls.Add(this.linkLabel1);
             this.aboutPage.Controls.Add(this.creditAlaxe);
             this.aboutPage.Controls.Add(this.creditLabel);
@@ -255,7 +257,7 @@ namespace Female_Pyro_Model_Manager
             // 
             this.creditLabel.AutoSize = true;
             this.creditLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.creditLabel.Location = new System.Drawing.Point(135, 35);
+            this.creditLabel.Location = new System.Drawing.Point(135, 55);
             this.creditLabel.Name = "creditLabel";
             this.creditLabel.Size = new System.Drawing.Size(218, 40);
             this.creditLabel.TabIndex = 1;
@@ -265,12 +267,21 @@ namespace Female_Pyro_Model_Manager
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Female_Pyro_Model_Manager.Properties.Resources.alaxe;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 167);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 170);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(179, 240);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(202, 388);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(291, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Tip: Rail Spikes can be selected along with other cosmetics.";
             // 
             // Form1
             // 
@@ -317,6 +328,7 @@ namespace Female_Pyro_Model_Manager
         private System.Windows.Forms.Label creditLabel;
         private System.Windows.Forms.LinkLabel creditAlaxe;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -69,5 +69,61 @@ namespace Female_Pyro_Model_Manager.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charred Chainmail
+        ///Crusaders Getup
+        ///Hot Case
+        ///Lunatics Leathers
+        ///Maniacs Manacles
+        ///North Polar Fleece
+        ///Pyromancers Raiments
+        ///Rail Spikes
+        ///Soot Suit
+        ///Space Diver
+        ///Sub Zero Suit
+        ///Sweet Smismass Sweater
+        ///Tricksters Turnout Gear
+        ///Voodoo Cursed Soul
+        ///Wanderers Wear
+        ///Water Waders.
+        /// </summary>
+        internal static string cosmetics {
+            get {
+                return ResourceManager.GetString("cosmetics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Color Similar to Slate
+        ///A Deep Commitment to Purple
+        ///A Distinctive Lack of Hue
+        ///A Mann&apos;s Mint
+        ///After Eight
+        ///Aged Moustache Grey
+        ///An Air of Debonair
+        ///An Extraordinary Abundance of Tinge
+        ///Australium Gold
+        ///Balaclavas Are Forever
+        ///Color No. 216-190-216
+        ///Cream Spirit
+        ///Dark Salmon Injustice
+        ///Drably Olive
+        ///Indubitably Green
+        ///Mann Co. Orange
+        ///Muskelmannbraun
+        ///Noble Hatter&apos;s Violet
+        ///Operator&apos;s Overalls
+        ///Peculiarly Drab Tincture
+        ///Pink as Hell
+        ///Radigan Conagher Brown
+        ///Team Spirit
+        ///The Bitter Taste of Defeat and Lime [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string paints {
+            get {
+                return ResourceManager.GetString("paints", resourceCulture);
+            }
+        }
     }
 }
