@@ -11,7 +11,7 @@ using System.IO;
 using Microsoft.Win32;
 using System.Threading;
 
-namespace Female_Pyro_Model_Manager
+namespace FemalePyroModelManager
 {
     public partial class ModelManager : Form
     {

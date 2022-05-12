@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32428.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Female-Pyro-Model-Manager", "Female-Pyro-Model-Manager\Female-Pyro-Model-Manager.csproj", "{DEC78E55-AE35-4AB7-93ED-C43044D733BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FemalePyroModelManager", "FemalePyroModelManager\FemalePyroModelManager.csproj", "{DEC78E55-AE35-4AB7-93ED-C43044D733BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

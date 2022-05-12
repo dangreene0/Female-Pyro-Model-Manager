@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Female_Pyro_Model_Manager.Properties {
+namespace FemalePyroModelManager.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Female_Pyro_Model_Manager.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Female_Pyro_Model_Manager.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FemalePyroModelManager.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -91,6 +91,16 @@ namespace Female_Pyro_Model_Manager.Properties {
         internal static string cosmetics {
             get {
                 return ResourceManager.GetString("cosmetics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dani {
+            get {
+                object obj = ResourceManager.GetObject("dani", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

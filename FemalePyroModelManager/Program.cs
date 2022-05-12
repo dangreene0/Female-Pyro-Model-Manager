@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Female_Pyro_Model_Manager
+namespace FemalePyroModelManager
 {
     static class Program
     {

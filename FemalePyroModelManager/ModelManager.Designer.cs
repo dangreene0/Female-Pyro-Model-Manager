@@ -1,5 +1,5 @@
 ﻿
-namespace Female_Pyro_Model_Manager
+namespace FemalePyroModelManager
 {
     partial class ModelManager
     {
@@ -46,16 +46,18 @@ namespace Female_Pyro_Model_Manager
             this.paintListBox = new System.Windows.Forms.CheckedListBox();
             this.cosmeticListBox = new System.Windows.Forms.CheckedListBox();
             this.aboutPage = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.creditAlaxe = new System.Windows.Forms.LinkLabel();
             this.creditLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gameBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.exportBrowser = new System.Windows.Forms.FolderBrowserDialog();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabControls.SuspendLayout();
             this.viewmodelPage.SuspendLayout();
             this.aboutPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -219,6 +221,7 @@ namespace Female_Pyro_Model_Manager
             this.aboutPage.Controls.Add(this.creditAlaxe);
             this.aboutPage.Controls.Add(this.creditLabel);
             this.aboutPage.Controls.Add(this.pictureBox1);
+            this.aboutPage.Controls.Add(this.pictureBox2);
             this.aboutPage.Location = new System.Drawing.Point(4, 22);
             this.aboutPage.Name = "aboutPage";
             this.aboutPage.Padding = new System.Windows.Forms.Padding(3);
@@ -226,6 +229,25 @@ namespace Female_Pyro_Model_Manager
             this.aboutPage.TabIndex = 2;
             this.aboutPage.Text = "About";
             this.aboutPage.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::FemalePyroModelManager.Properties.Resources.dani;
+            this.pictureBox2.Location = new System.Drawing.Point(236, 6);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(288, 212);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(202, 388);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(291, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Tip: Rail Spikes can be selected along with other cosmetics.";
             // 
             // linkLabel1
             // 
@@ -256,8 +278,9 @@ namespace Female_Pyro_Model_Manager
             // creditLabel
             // 
             this.creditLabel.AutoSize = true;
+            this.creditLabel.BackColor = System.Drawing.Color.Transparent;
             this.creditLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.creditLabel.Location = new System.Drawing.Point(135, 55);
+            this.creditLabel.Location = new System.Drawing.Point(37, 67);
             this.creditLabel.Name = "creditLabel";
             this.creditLabel.Size = new System.Drawing.Size(218, 40);
             this.creditLabel.TabIndex = 1;
@@ -266,7 +289,7 @@ namespace Female_Pyro_Model_Manager
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Female_Pyro_Model_Manager.Properties.Resources.alaxe;
+            this.pictureBox1.Image = global::FemalePyroModelManager.Properties.Resources.alaxe;
             this.pictureBox1.Location = new System.Drawing.Point(6, 170);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(179, 240);
@@ -274,16 +297,7 @@ namespace Female_Pyro_Model_Manager
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(202, 388);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(291, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Tip: Rail Spikes can be selected along with other cosmetics.";
-            // 
-            // Form1
+            // ModelManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -292,13 +306,14 @@ namespace Female_Pyro_Model_Manager
             this.Controls.Add(this.tabControls);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "ModelManager";
             this.Text = "Female Pyro Model Manager";
             this.tabControls.ResumeLayout(false);
             this.viewmodelPage.ResumeLayout(false);
             this.viewmodelPage.PerformLayout();
             this.aboutPage.ResumeLayout(false);
             this.aboutPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -329,6 +344,7 @@ namespace Female_Pyro_Model_Manager
         private System.Windows.Forms.LinkLabel creditAlaxe;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
