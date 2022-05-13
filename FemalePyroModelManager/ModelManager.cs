@@ -71,7 +71,31 @@ namespace FemalePyroModelManager
                 cosmeticListBox.SetItemChecked(i, value);
             }
         }
+        
+        // Gets all of the currently listed cosmetics
+        private string GetAllCheckCosmetics()
+        {
+            string cosmeticsStr = "";
+            int cosmCount = 0;
 
+            for (int i = 0; i < cosmeticListBox.Items.Count; i++)
+            {
+                // Checks if the checkbox is checked
+                if (cosmeticListBox.GetItemChecked(i))
+                {
+                    // Adds to the count
+                    cosmCount++;
+                    if (cosmCount == 2) // if theres 2 it adds an 'and' in between
+                    {
+                        cosmeticsStr += " and ";
+                    }
+                    cosmeticsStr += cosmeticListBox.Items[i].ToString();
+                }
+            }
+            return cosmeticsStr;
+        }
+
+        // COSMETICS SELECTED
         private void cosmeticListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Defines the index that was selected to store for later
@@ -105,30 +129,31 @@ namespace FemalePyroModelManager
                 paintListBox.SetItemChecked(i, value);
             }
         }
-
-        private void paintListBox_SelectedIndexChanged(object sender, EventArgs e)
+       
+        // PAINTS SELECTED
+        private void paintListBox_SelectedIndexChanged(object sender, EventArgs e) 
         {
             int selectInd = paintListBox.SelectedIndex; // grabs the current selected checkbox
             // if there is something selected, it removes all the rest and sets it back.
-            if (paintListBox.SelectedIndex != -1)
+            if (paintListBox.SelectedIndex != -1) // TODO do paintListBox.GetSelected(paintListBox.SelectedIndex) somewhere
             {
                 ChangeAllCheckPaints(false);
                 paintListBox.SetItemChecked(selectInd, true);
             }
         }
-
+        
         private void packBtn_Click(object sender, EventArgs e)
         {
             packProgressBar.Value = 0;
-            if (cosmeticListBox.SelectedIndex != -1)
+            if (cosmeticListBox.SelectedIndex != -1 && cosmeticListBox.GetSelected(cosmeticListBox.SelectedIndex))
             {
                 packingText.Text = "Packing...";
-
-                
-                vpkName = vpkDefaultName + cosmeticListBox.SelectedItem; // TODO allow for rail spikes PLUS other item
+                string cosmetics = GetAllCheckCosmetics();
+                vpkName = vpkDefaultName + cosmetics;
                 MessageBox.Show(vpkName);
             }
-            else {
+            else
+            {
                 MessageBox.Show("Please Select a Cosmetic.");
             }
         }

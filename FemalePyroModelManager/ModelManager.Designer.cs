@@ -46,19 +46,19 @@ namespace FemalePyroModelManager
             this.paintListBox = new System.Windows.Forms.CheckedListBox();
             this.cosmeticListBox = new System.Windows.Forms.CheckedListBox();
             this.aboutPage = new System.Windows.Forms.TabPage();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.tipLabel = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.creditAlaxe = new System.Windows.Forms.LinkLabel();
             this.creditLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gameBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.exportBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControls.SuspendLayout();
             this.viewmodelPage.SuspendLayout();
             this.aboutPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControls
@@ -216,7 +216,7 @@ namespace FemalePyroModelManager
             // 
             // aboutPage
             // 
-            this.aboutPage.Controls.Add(this.label3);
+            this.aboutPage.Controls.Add(this.tipLabel);
             this.aboutPage.Controls.Add(this.linkLabel1);
             this.aboutPage.Controls.Add(this.creditAlaxe);
             this.aboutPage.Controls.Add(this.creditLabel);
@@ -230,24 +230,14 @@ namespace FemalePyroModelManager
             this.aboutPage.Text = "About";
             this.aboutPage.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
+            // tipLabel
             // 
-            this.pictureBox2.Image = global::FemalePyroModelManager.Properties.Resources.dani;
-            this.pictureBox2.Location = new System.Drawing.Point(236, 6);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(288, 212);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(202, 388);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(291, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Tip: Rail Spikes can be selected along with other cosmetics.";
+            this.tipLabel.AutoSize = true;
+            this.tipLabel.Location = new System.Drawing.Point(202, 388);
+            this.tipLabel.Name = "tipLabel";
+            this.tipLabel.Size = new System.Drawing.Size(291, 13);
+            this.tipLabel.TabIndex = 4;
+            this.tipLabel.Text = "Tip: Rail Spikes can be selected along with other cosmetics.";
             // 
             // linkLabel1
             // 
@@ -297,6 +287,16 @@ namespace FemalePyroModelManager
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::FemalePyroModelManager.Properties.Resources.dani;
+            this.pictureBox2.Location = new System.Drawing.Point(228, 6);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(288, 212);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
             // ModelManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,8 +313,8 @@ namespace FemalePyroModelManager
             this.viewmodelPage.PerformLayout();
             this.aboutPage.ResumeLayout(false);
             this.aboutPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -343,7 +343,7 @@ namespace FemalePyroModelManager
         private System.Windows.Forms.Label creditLabel;
         private System.Windows.Forms.LinkLabel creditAlaxe;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label tipLabel;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
