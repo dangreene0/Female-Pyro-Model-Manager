@@ -4,3 +4,5 @@
 *.suo
 FemalePyroModelManager/bin
 FemalePyroModelManager/obj
+FemalePyroModelManager/Resources/Arm_Models.zip
+/packages

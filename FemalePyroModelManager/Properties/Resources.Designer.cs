@@ -71,6 +71,16 @@ namespace FemalePyroModelManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Arm_Models {
+            get {
+                object obj = ResourceManager.GetObject("Arm_Models", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Charred Chainmail
         ///Crusaders Getup
         ///Hot Case

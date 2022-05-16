@@ -21,6 +21,7 @@ namespace FemalePyroModelManager
         private string cosmeticsFullStream = Properties.Resources.cosmetics;
         private string paintFullStream = Properties.Resources.paints;
         private int selectedCount = 0;
+        private FileHandler fileHandler = new FileHandler();
 
         public ModelManager()
         {
@@ -34,6 +35,7 @@ namespace FemalePyroModelManager
             // Sets default location of the tf2 vpk based on steam's location in the registry
             string gameLocation = "/steamapps/common/Team Fortress 2/bin";
             gameTextBox.Text = registryLocation + gameLocation;
+            folderName = gameTextBox.Text;
 
             // Sets default export locations based on steam's location in the registry
             string customLocation = gameLocation + "/tf/custom";
@@ -43,10 +45,12 @@ namespace FemalePyroModelManager
             string[] cosmeticsArr = cosmeticsFullStream.Split(new string[] { "\r\n" }, StringSplitOptions.None);
             string[] paintArr = paintFullStream.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
+
             DisplayPaint(paintArr);
             DisplayCosmetics(cosmeticsArr);
+
         }
-       
+
         // Displays the cosmetics and paint arrays
         private void DisplayCosmetics(string[] arr)
         {
@@ -73,10 +77,11 @@ namespace FemalePyroModelManager
         }
         
         // Gets all of the currently listed cosmetics
-        private string GetAllCheckCosmetics()
+        private List<string> GetAllCheckCosmetics()
         {
             string cosmeticsStr = "";
             int cosmCount = 0;
+            List<string> cosmeticsList = new List<string>();
 
             for (int i = 0; i < cosmeticListBox.Items.Count; i++)
             {
@@ -87,12 +92,21 @@ namespace FemalePyroModelManager
                     cosmCount++;
                     if (cosmCount == 2) // if theres 2 it adds an 'and' in between
                     {
+                        string cosmTwo = cosmeticListBox.Items[i].ToString();
+                        cosmeticsList.Add(cosmTwo);
+
                         cosmeticsStr += " and ";
+                    }
+                    if (cosmCount == 1)
+                    {
+                        string cosmOne = cosmeticListBox.Items[i].ToString();
+                        cosmeticsList.Add(cosmOne);
                     }
                     cosmeticsStr += cosmeticListBox.Items[i].ToString();
                 }
             }
-            return cosmeticsStr;
+            cosmeticsList.Insert(0, cosmeticsStr);// Puts the file name in the first index
+            return cosmeticsList;
         }
 
         // COSMETICS SELECTED
@@ -144,13 +158,18 @@ namespace FemalePyroModelManager
         
         private void packBtn_Click(object sender, EventArgs e)
         {
+
             packProgressBar.Value = 0;
             if (cosmeticListBox.SelectedIndex != -1 && cosmeticListBox.GetSelected(cosmeticListBox.SelectedIndex))
             {
                 packingText.Text = "Packing...";
-                string cosmetics = GetAllCheckCosmetics();
-                vpkName = vpkDefaultName + cosmetics;
-                MessageBox.Show(vpkName);
+
+                List<string> cosmetics = GetAllCheckCosmetics();
+                vpkName = vpkDefaultName + cosmetics[0]; // adds the cosmetic string
+
+                string gameDir = gameTextBox.Text;
+                string exportDir = exportTextBox.Text;
+                fileHandler.packFiles(vpkName, gameDir, exportDir);
             }
             else
             {
