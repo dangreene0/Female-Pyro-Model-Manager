@@ -4,7 +4,7 @@ namespace FemalePyroModelManager
 {
     class PaintCheck
     {
-        private string paintVal = "";
+
         public Dictionary<string, string> paintsBase = new Dictionary<string, string>(){
             {"A Color Similar to Slate", "#2F4F4F"},
             {"A Deep Commitment to Purple", "#7D4071"},
@@ -29,11 +29,33 @@ namespace FemalePyroModelManager
             {"Ye Olde Rustic Colour", "#7C6C57"},
             {"Zepheniah's Greed", "#424F3B"}
         };
-        public string getPaint(string paintName)
+
+        public Dictionary<string, string[]> paintsTeam = new Dictionary<string, string[]>()
         {
+            {"An Air of Debonair", new string[]{ "#654740", "#28394D"}},
+            {"Balaclavas Are Forever", new string[]{ "#3B1F23", "#18233D"}},
+            {"Cream Spirit", new string[]{ "#C36C2D", "#B88035"}},
+            {"Operator's Overalls", new string[]{ "#483838", "#384248"}},
+            {"Team Spirit", new string[]{ "#B8383B", "#5885A2"}},
+            {"The Value of Teamwork", new string[]{ "#803020", "#256D8D"}},
+            {"Waterlogged Lab Coat", new string[]{ "#A89A8C", "#839FA3"}}
+        };
+        public string getBasePaint(string paintName)
+        {
+            string paintVal = "";
+
             if (paintsBase.ContainsKey(paintName))
             {
                 paintVal = paintsBase[paintName];
+            }
+            return paintVal;
+        }
+        public string[] getTeamPaint(string paintName)
+        {
+            string[] paintVal = new string[0];
+            if (paintsTeam.ContainsKey(paintName))
+            {
+                paintVal = paintsTeam[paintName];
             }
             return paintVal;
         }

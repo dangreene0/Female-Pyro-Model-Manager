@@ -160,7 +160,6 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="Resources\dani.png" />
-    <None Include="Resources\vmtBase.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

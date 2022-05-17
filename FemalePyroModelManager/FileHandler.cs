@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.IO.Compression;
 using System.Diagnostics;
+using System.Threading;
 
 namespace FemalePyroModelManager
 {
@@ -14,7 +15,7 @@ namespace FemalePyroModelManager
         private string vpkFileName;
         private string tempDir = Path.GetTempPath() + "Alaxe-Models/Arm_Models";
         private PaintCheck paintCheck = new PaintCheck();
-        private string paintVal;
+        private string[] paintVal;
 
         public void packFiles(string vpkName, string gameDir, string exportDir, List<string> cosmetics, params string[] paintName)
         {
@@ -30,14 +31,27 @@ namespace FemalePyroModelManager
             if (paintName.Count() > 0) // TODO have select cosmetics call place paint
             {
                 vpkName += " " + paintName[0];
-                paintVal = paintCheck.getPaint(paintName[0]);
+                PaintCheck pc = new PaintCheck();
+                if (pc.paintsBase.ContainsKey(paintName[0]))
+                {
+                    paintVal[0] = paintCheck.getBasePaint(paintName[0]);
+                }
+                if (pc.paintsTeam.ContainsKey(paintName[0]))
+                {
+                    paintVal = paintCheck.getTeamPaint(paintName[0]);
+                }
                 // ApplyPaint(paintVal);
-                MessageBox.Show(paintVal);
+                if (paintVal.Count() < 1)
+                {
+                    MessageBox.Show(paintVal[0]);
+                }
+                else
+                {
+                    MessageBox.Show(paintVal[0] + " " + paintVal[1]);
+                }
             }
-
             vpkExeDir = gameDir;
-            TouchVPK(cosmetics,exportDir);
- 
+            //TouchVPK(cosmetics,exportDir);
             // DeleteTempDir();
         }
         private void MakeDir()
@@ -137,35 +151,24 @@ namespace FemalePyroModelManager
             List<ProcessCount> listofprocess = new List<ProcessCount>();
 
             var mpHandler = new MultiProcessHandler();
-            MessageBox.Show(vpkExeDir);
             if (File.Exists(vpkExeDir + "\\bin\\vpk.exe"))
             {
-                MessageBox.Show(vpkExeDir + "\\bin\\vpk.exe");
                 try
                 {
                     string path = tempDir + "/" + cosmetics[1];
                     string path2 = exportDir;
-                    MessageBox.Show(vpkExeDir + path);
+                    string quote = "\"";
 
                     Process vpak3 = new Process();
-
-
                     vpak3.StartInfo.FileName = "CMD.exe";
 
-                    string quote = "\"";
                     vpak3.StartInfo.Arguments = @"/c " + "cd /d " + quote + path2 + quote + "\\bin && start " + "/wait " + "vpk.exe " + quote + path + quote;
 
-
                     vpak3.StartInfo.UseShellExecute = false;
-
                     vpak3.StartInfo.CreateNoWindow = true;
-
                     vpak3.StartInfo.LoadUserProfile = true;
-
                     vpak3.StartInfo.RedirectStandardError = true;
-
                     vpak3.StartInfo.RedirectStandardInput = true;
-
                     vpak3.StartInfo.RedirectStandardOutput = true;
 
                     listofprocess.Add(new ProcessCount
@@ -175,18 +178,23 @@ namespace FemalePyroModelManager
                     });
 
                     vpak3.Start();
-
                     await mpHandler.Waitforprocess(vpak3, "", "");
 
+                    MessageBox.Show("test");
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show("Unable to find vpk.exe.\n Are you pointing to the wrong \"bin\" folder?\n\n" + e);
                 }
             }
-            //await mpHandler.WaitforAllDone(listofprocess);
 
             upProgress(5);
+
+            Thread enableThread =
+                        new Thread(new ThreadStart(mpHandler.EnableAllFeatures));
+            enableThread.Start();
+
+
         }
         private void DeleteTempDir()
         {
@@ -210,7 +218,7 @@ namespace FemalePyroModelManager
             {
                 MessageBox.Show("Progress Cannot go above 100.\n\n" + e);
             }
-            
         }
+       
     }
 }

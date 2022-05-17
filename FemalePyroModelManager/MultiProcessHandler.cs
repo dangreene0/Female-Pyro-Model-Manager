@@ -58,6 +58,11 @@ namespace FemalePyroModelManager
             var form = Form.ActiveForm as ModelManager;
             form.ToggleControls(false);
         }
+        public void EnableAllFeatures()
+        {
+            var form = Form.ActiveForm as ModelManager;
+            form.ToggleControls(true);
+        }
 
         public Task WaitforAllDone(List<ProcessCount> p)
         {
