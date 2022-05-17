@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using Microsoft.Win32;
-using System.Threading;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace FemalePyroModelManager
 {
-    public partial class ModelManager : Form
+    public partial class ModelManager : MaterialForm
     {
         private string folderName;
         private string vpkDefaultName = "Female Pyro Viewmodel - ";
@@ -22,18 +16,25 @@ namespace FemalePyroModelManager
         private string paintFullStream = Properties.Resources.paints;
         private int selectedCount = 0;
         private FileHandler fileHandler = new FileHandler();
+        private string paintName;
 
         public ModelManager()
         {
             InitializeComponent();
-            
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager.ColorScheme =
+                new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
             // Gets the default steam location from the registry
             const string valueName = "SteamPath";
             RegistryKey reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam");
             string registryLocation = reg.GetValue(valueName).ToString();
 
             // Sets default location of the tf2 vpk based on steam's location in the registry
-            string gameLocation = "/steamapps/common/Team Fortress 2/bin";
+            string gameLocation = "/steamapps/common/Team Fortress 2";
             gameTextBox.Text = registryLocation + gameLocation;
             folderName = gameTextBox.Text;
 
@@ -45,10 +46,16 @@ namespace FemalePyroModelManager
             string[] cosmeticsArr = cosmeticsFullStream.Split(new string[] { "\r\n" }, StringSplitOptions.None);
             string[] paintArr = paintFullStream.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
-
             DisplayPaint(paintArr);
             DisplayCosmetics(cosmeticsArr);
+        }
 
+        public void ToggleControls(bool toggle)
+        {
+            foreach (Control c in this.Controls)
+            {
+                c.Enabled = toggle;
+            }
         }
 
         // Displays the cosmetics and paint arrays
@@ -169,7 +176,18 @@ namespace FemalePyroModelManager
 
                 string gameDir = gameTextBox.Text;
                 string exportDir = exportTextBox.Text;
-                fileHandler.packFiles(vpkName, gameDir, exportDir);
+
+                if (paintListBox.SelectedIndex != -1 && paintListBox.GetSelected(paintListBox.SelectedIndex))
+                {
+                    paintName = paintListBox.Items[paintListBox.SelectedIndex].ToString();
+                    fileHandler.packFiles(vpkName, gameDir, exportDir, cosmetics, paintName);
+                }
+                else
+                {
+                    fileHandler.packFiles(vpkName, gameDir, exportDir, cosmetics);
+                }
+
+                packingText.Text = "Done.";
             }
             else
             {

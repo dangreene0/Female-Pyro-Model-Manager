@@ -327,7 +327,7 @@ namespace FemalePyroModelManager
         private System.Windows.Forms.CheckedListBox cosmeticListBox;
         private System.Windows.Forms.Label paintLabel;
         private System.Windows.Forms.Label cosmeticLabel;
-        private System.Windows.Forms.ProgressBar packProgressBar;
+        public System.Windows.Forms.ProgressBar packProgressBar;
         private System.Windows.Forms.Label packingText;
         private System.Windows.Forms.Label exportLabel;
         private System.Windows.Forms.Label gameLabel;

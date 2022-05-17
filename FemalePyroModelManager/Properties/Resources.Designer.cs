@@ -145,5 +145,22 @@ namespace FemalePyroModelManager.Properties {
                 return ResourceManager.GetString("paints", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Patch&quot;
+        ///{
+        ///	include &quot;materials/models/alaxe/tf2/cosmetics/pyro_female/fleece/fleece/fleece_red.vmt&quot;
+        ///
+        ///	insert
+        ///	{
+        ///		&quot;$colortint_base&quot;	&quot;{PAINT}&quot;
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string vmtBase {
+            get {
+                return ResourceManager.GetString("vmtBase", resourceCulture);
+            }
+        }
     }
 }
