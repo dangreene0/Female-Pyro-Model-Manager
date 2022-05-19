@@ -46,8 +46,9 @@ namespace FemalePyroModelManager
             string[] cosmeticsArr = cosmeticsFullStream.Split(new string[] { "\r\n" }, StringSplitOptions.None);
             string[] paintArr = paintFullStream.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
-            DisplayPaint(paintArr);
-            DisplayCosmetics(cosmeticsArr);
+            DisplayItems(cosmeticListBox, cosmeticsArr);
+            DisplayItems(paintListBox, paintArr);
+
         }
 
         public void ToggleControls(bool toggle)
@@ -58,19 +59,11 @@ namespace FemalePyroModelManager
             }
         }
 
-        // Displays the cosmetics and paint arrays
-        private void DisplayCosmetics(string[] arr)
+        private void DisplayItems(CheckedListBox e, string[] arr)
         {
             foreach (string item in arr)
             {
-                cosmeticListBox.Items.Add(item);
-            }
-        }
-        private void DisplayPaint(string[] arr)
-        {
-            foreach (string item in arr)
-            {
-                paintListBox.Items.Add(item);
+                e.Items.Add(item);
             }
         }
 
@@ -84,7 +77,7 @@ namespace FemalePyroModelManager
         }
         
         // Gets all of the currently listed cosmetics
-        private List<string> GetAllCheckCosmetics()
+        private List<string> GetAllCheckedCosmetics()
         {
             string cosmeticsStr = "";
             int cosmCount = 0;
@@ -171,20 +164,26 @@ namespace FemalePyroModelManager
             {
                 packingText.Text = "Packing...";
 
-                List<string> cosmetics = GetAllCheckCosmetics();
+                List<string> cosmetics = GetAllCheckedCosmetics();
                 vpkName = vpkDefaultName + cosmetics[0]; // adds the cosmetic string
 
                 string gameDir = gameTextBox.Text;
                 string exportDir = exportTextBox.Text;
-
-                if (paintListBox.SelectedIndex != -1 && paintListBox.GetSelected(paintListBox.SelectedIndex))
+                try
                 {
-                    paintName = paintListBox.Items[paintListBox.SelectedIndex].ToString();
-                    fileHandler.packFiles(vpkName, gameDir, exportDir, cosmetics, paintName);
+                    if (paintListBox.SelectedIndex != -1 && paintListBox.GetSelected(paintListBox.SelectedIndex))
+                    {
+                        paintName = paintListBox.Items[paintListBox.SelectedIndex].ToString();
+                        fileHandler.packFiles(vpkName, gameDir, exportDir, cosmetics, paintName);
+                    }
+                    else
+                    {
+                        fileHandler.packFiles(vpkName, gameDir, exportDir, cosmetics);
+                    }
                 }
-                else
+                catch (Exception Ex)
                 {
-                    fileHandler.packFiles(vpkName, gameDir, exportDir, cosmetics);
+                    MessageBox.Show("You died\n" + Ex);
                 }
 
                 packingText.Text = "Done.";

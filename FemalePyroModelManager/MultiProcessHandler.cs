@@ -11,6 +11,8 @@ namespace FemalePyroModelManager
     public class MultiProcessHandler
     {
         public List<string> listOfPossibleBadVPKS = new List<string>();
+        private ModelManager form = new ModelManager();
+
         public Task Waitforprocess(Process p, string file, string vpkfilepath)
         {
 
@@ -55,12 +57,10 @@ namespace FemalePyroModelManager
         }
         public void DisableAllFeatures()
         {
-            var form = Form.ActiveForm as ModelManager;
             form.ToggleControls(false);
         }
         public void EnableAllFeatures()
         {
-            var form = Form.ActiveForm as ModelManager;
             form.ToggleControls(true);
         }
 
@@ -88,7 +88,5 @@ namespace FemalePyroModelManager
         public Process p { get; set; }
 
         public bool Done { get; set; }
-
     }
-
 }

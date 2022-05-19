@@ -13,32 +13,34 @@ namespace FemalePyroModelManager
     {
         public string vpkExeDir;
         private string vpkFileName;
-        private string tempDir = Path.GetTempPath() + "Alaxe-Models/Arm_Models";
+        private string tempDir = Path.GetTempPath() + "Alaxe-Models";
         private PaintCheck paintCheck = new PaintCheck();
         private string[] paintVal;
 
         public void packFiles(string vpkName, string gameDir, string exportDir, List<string> cosmetics, params string[] paintName)
         {
             vpkFileName = vpkName;
+            paintVal = new string[2]; // RESETS the paint values!!!!!!!!!!!!!!!
+
             upProgress(5);
 
-            //MakeDir();
-            /*ExportZip();
-            ExtractZip();*/
-/*
+            MakeDir();
+            ExportZip();
+            ExtractZip();
+
             SelectCosmetics(cosmetics, exportDir);
-*/
+
             if (paintName.Count() > 0) // TODO have select cosmetics call place paint
             {
                 vpkName += " " + paintName[0];
                 PaintCheck pc = new PaintCheck();
                 if (pc.paintsBase.ContainsKey(paintName[0]))
                 {
-                    paintVal[0] = paintCheck.getBasePaint(paintName[0]);
+                    paintVal[0] = pc.getBasePaint(paintName[0]);
                 }
                 if (pc.paintsTeam.ContainsKey(paintName[0]))
                 {
-                    paintVal = paintCheck.getTeamPaint(paintName[0]);
+                    paintVal = pc.getTeamPaint(paintName[0]);
                 }
                 // ApplyPaint(paintVal);
                 if (paintVal.Count() < 1)
@@ -50,9 +52,10 @@ namespace FemalePyroModelManager
                     MessageBox.Show(paintVal[0] + " " + paintVal[1]);
                 }
             }
+
             vpkExeDir = gameDir;
-            //TouchVPK(cosmetics,exportDir);
-            // DeleteTempDir();
+            TouchVPK(cosmetics);
+            DeleteTempDir(); // execute this after the program closes???
         }
         private void MakeDir()
         {
@@ -146,7 +149,7 @@ namespace FemalePyroModelManager
             File.WriteAllText(cosmDir, text);
         }
 
-        private async void TouchVPK(List<string> cosmetics, string exportDir)
+        private async void TouchVPK(List<string> cosmetics) // WORKS PLEASE BE KIND TO HER
         {
             List<ProcessCount> listofprocess = new List<ProcessCount>();
 
@@ -155,13 +158,13 @@ namespace FemalePyroModelManager
             {
                 try
                 {
-                    string path = tempDir + "/" + cosmetics[1];
-                    string path2 = exportDir;
+                    string path = tempDir + "/Arm_Models/" + cosmetics[1];
+                    string path2 = vpkExeDir;
                     string quote = "\"";
 
                     Process vpak3 = new Process();
                     vpak3.StartInfo.FileName = "CMD.exe";
-
+                    // the @"/c " is necessary or else it will never work
                     vpak3.StartInfo.Arguments = @"/c " + "cd /d " + quote + path2 + quote + "\\bin && start " + "/wait " + "vpk.exe " + quote + path + quote;
 
                     vpak3.StartInfo.UseShellExecute = false;
@@ -180,7 +183,6 @@ namespace FemalePyroModelManager
                     vpak3.Start();
                     await mpHandler.Waitforprocess(vpak3, "", "");
 
-                    MessageBox.Show("test");
                 }
                 catch (Exception e)
                 {
@@ -194,7 +196,7 @@ namespace FemalePyroModelManager
                         new Thread(new ThreadStart(mpHandler.EnableAllFeatures));
             enableThread.Start();
 
-
+            upProgress(5);
         }
         private void DeleteTempDir()
         {
@@ -205,7 +207,7 @@ namespace FemalePyroModelManager
             }
             upProgress(5);
         }
-        private void upProgress(int i)
+        private void upProgress(int i) // TODO ADD THREADING TO THE UI
         {
             var form = Form.ActiveForm as ModelManager;
             try
@@ -219,6 +221,5 @@ namespace FemalePyroModelManager
                 MessageBox.Show("Progress Cannot go above 100.\n\n" + e);
             }
         }
-       
     }
 }
